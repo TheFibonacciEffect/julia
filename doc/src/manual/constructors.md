@@ -166,6 +166,16 @@ convenience constructor methods, supplying default values or auxiliary transform
 be provided as outer constructors that call the inner constructors to do the heavy lifting. This
 separation is typically quite natural.
 
+For convenience ther is a macro that generates a keyword-based constructor with default values in a different sintax using `field::T = default` or `field = default`:
+```
+Base.@kwdef struct Foo
+             a::Int = 1         # specified default
+             b::String          # required keyword
+         end
+Foo(b="hi")
+```
+
+
 ## Incomplete Initialization
 
 The final problem which has still not been addressed is construction of self-referential objects,
